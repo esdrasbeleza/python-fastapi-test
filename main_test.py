@@ -11,7 +11,7 @@ def test_hello_endpoint(mock_index_note):
     # Configure the mock behavior to sleep for 3 seconds
     async def mocked_index_note(name):
         await asyncio.sleep(3)
-        print("Hello, {name}!")
+        print("This function will run on background, and this call will be reached after 3s")
 
     # Notice that even though we're not calling the real index_note,
     # it will still be executed async'ly

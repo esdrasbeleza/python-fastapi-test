@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 import pipe
 import asyncio
@@ -9,6 +9,7 @@ app = FastAPI()
 async def hello_endpoint(name: str):
     # index_note is async, so it will return before its execution.
     # If it fails for some reason, the client won't know.
+    # AGAIN: errors will be ignored in this API!
     asyncio.create_task(pipe.index_note(name))
 
     response_body = {"message": f"Hello, {name}!"}
